@@ -113,29 +113,34 @@ const pagarServicios = () => {
 
     let misServicios = ["Agua", "Telefono", "Luz", "Internet"];
 
-    let servicio = prompt(`Ingrese el número que corresponda al servicio a pagar
-    1. Agua - Valor ${agua}
-    2. Telefono - Valor ${telefono}
-    3. Luz - Valor ${luz}
-    4. Internet - Valor ${internet}
-    `);
+    if(estadoDelUsuario){
+        let servicio = prompt(`Ingrese el número que corresponda al servicio a pagar
+        1. Agua - Valor ${agua}
+        2. Telefono - Valor ${telefono}
+        3. Luz - Valor ${luz}
+        4. Internet - Valor ${internet}
+        `);
 
-    switch (servicio) {
-        case "1":
-        depositarServicio(agua, misServicios[0]);
-        break;
-        case "2":
-        depositarServicio(telefono, misServicios[1]);
-        break;
-        case "3":
-        depositarServicio(luz, misServicios[2]);
-        break;
-        case "4":
-        depositarServicio(internet, misServicios[3]);
-        break;
-        default:
-        alert("No hay opción valida");
-        break;
+        switch (servicio) {
+            case "1":
+            depositarServicio(agua, misServicios[0]);
+            break;
+            case "2":
+            depositarServicio(telefono, misServicios[1]);
+            break;
+            case "3":
+            depositarServicio(luz, misServicios[2]);
+            break;
+            case "4":
+            depositarServicio(internet, misServicios[3]);
+            break;
+            default:
+            alert("No hay opción valida");
+            break;
+        }
+    }
+    else{
+        alert('Servicio No Disponible.  Debes primero ingresar Usurio y Contraseña');
     }
 };
 
