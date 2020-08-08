@@ -182,3 +182,24 @@ body {
     margin-bottom: 10px;
   }
 }
+
+#cuenta-ingreso{
+  width: 100%;
+  text-align: center;
+}
+
+#usuario-equivocado{
+  width: 100%;
+  text-align: center;
+}
+
+#Clave-equivocada{
+  width: 100%;
+  text-align: center;
+}
+
+.btn-PantIng{
+  background-color: rgb(224, 188, 133);
+  border-radius: 4px;
+  padding: 4px 10px 4px 10px;
+}

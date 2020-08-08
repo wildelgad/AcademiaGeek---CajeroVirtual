@@ -36,10 +36,21 @@
       </div>
       <div class="green-container">
         <div id="cuenta-ingreso">
-          <input type="text" id="cuenta-ingreso" placeholder="Ingreso tu Usuario">
-          <input type="password" id="contrasena" placeholder="Ingresa tu Contraseña">
+          <h3>Ingresa Tus Datos</h3>
+          <input type="text" id="ingreso-Usuario" placeholder="Ingreso tu Usuario">
+          <input type="password" id="contrasena" placeholder="Ingresa tu Contrasena">
+          <button id="btn-ingresar" onclick="iniciarSesion();">Ingresar</button>
         </div>
-        <div class="cuenta-info">
+        <div id="usuario-equivocado">
+          <h3>Usuario Equivocado</h3>
+          <br/>
+          <button class="btn-PantIng" onclick="mostrarPantallaDeLogin();">ir a pantalla de ingreso </button>
+        </div>
+        <div id="Clave-equivocada">
+          <h3>Clave equivocada</h3>
+          <button class="btn-PantIng" onclick="mostrarPantallaDeLogin();">ir a pantalla de ingreso</button>
+        </div>
+        <div class="cuenta-info" id="cuenta-info">
           <p>Saldo en tu cuenta</p>
           <h3 id="saldo-cuenta">$</h3>
           <p id="limite-extraccion">Tu límite de estrasion es:</p>
