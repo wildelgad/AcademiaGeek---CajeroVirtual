@@ -85,7 +85,10 @@ function depositarServicio(tipoDeServicio, nombreServicio) {
     `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
   );
 }
-rvicios[0]);
+
+function servicios(escogerServicio){
+  switch(escogerServicio){
+    case "1":
       break;
     case "2":
       depositarServicio(telefono, misServicios[1]);
