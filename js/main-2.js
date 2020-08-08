@@ -98,53 +98,53 @@ function terminarSesion(){
 //actualizar saldo en pantalla
 function actualizarSaldoEnPantalla() {
     document.getElementById("saldo-cuenta").innerHTML = "$ " + saldoEnCuenta;
-  }
+}
 
 //función flecha limite en pantalla fuction --- =>
 const actualizarLimiteEnPantalla = () => {
-document.getElementById("saldo-saldo").innerHTML =limiteExtraccion;
+    document.getElementById("saldo-saldo").innerHTML =limiteExtraccion;
 };
 
 const pagarServicios = () => {
-let agua = 500;
-let telefono = 425;
-let luz = 215;
-let internet = 100;
+    let agua = 500;
+    let telefono = 425;
+    let luz = 215;
+    let internet = 100;
 
-let misServicios = ["Agua", "Telefono", "Luz", "Internet"];
+    let misServicios = ["Agua", "Telefono", "Luz", "Internet"];
 
-let servicio = prompt(`Ingrese el número que corresponda al servicio a pagar
-1. Agua - Valor ${agua}
-2. Telefono - Valor ${telefono}
-3. Luz - Valor ${luz}
-4. Internet - Valor ${internet}
-`);
+    let servicio = prompt(`Ingrese el número que corresponda al servicio a pagar
+    1. Agua - Valor ${agua}
+    2. Telefono - Valor ${telefono}
+    3. Luz - Valor ${luz}
+    4. Internet - Valor ${internet}
+    `);
 
-switch (servicio) {
-    case "1":
-    depositarServicio(agua, misServicios[0]);
-    break;
-    case "2":
-    depositarServicio(telefono, misServicios[1]);
-    break;
-    case "3":
-    depositarServicio(luz, misServicios[2]);
-    break;
-    case "4":
-    depositarServicio(internet, misServicios[3]);
-    break;
-    default:
-    alert("No hay opción valida");
-    break;
-}
+    switch (servicio) {
+        case "1":
+        depositarServicio(agua, misServicios[0]);
+        break;
+        case "2":
+        depositarServicio(telefono, misServicios[1]);
+        break;
+        case "3":
+        depositarServicio(luz, misServicios[2]);
+        break;
+        case "4":
+        depositarServicio(internet, misServicios[3]);
+        break;
+        default:
+        alert("No hay opción valida");
+        break;
+    }
 };
 
 function depositarServicio(tipoDeServicio, nombreServicio) {
-saldoEnCuenta -= tipoDeServicio;
-actualizarSaldoEnPantalla();
-alert(
-    `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
-);
+    saldoEnCuenta -= tipoDeServicio;
+    actualizarSaldoEnPantalla();
+    alert(
+        `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
+    );
 }
 
 function servicios(escogerServicio){
@@ -167,67 +167,86 @@ switch(escogerServicio){
 };
 
 function depositarServicio(tipoDeServicio, nombreServicio) {
-saldoEnCuenta -= tipoDeServicio;
-actualizarSaldoEnPantalla();
-alert(
-    `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
-);
+    saldoEnCuenta -= tipoDeServicio;
+    actualizarSaldoEnPantalla();
+    alert(
+        `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
+    );
 }
 //evento para pagar servicios
 //listener sobre el elemento,
 document.getElementById("servicios").addEventListener("click", pagarServicios);
 function extraerDinero() {
-let dineroAExtraer = parseInt(prompt("Digite el Valor a extraer"), 0);
+    if(estadoDelUsuario){
+        let dineroAExtraer = parseInt(prompt("Digite el Valor a extraer"), 0);
 
-if (dineroAExtraer > saldoEnCuenta) {
-    alert("Error, su saldo es insuficiente");
-} else if (dineroAExtraer > limiteExtraccion) {
-    alert("No puede exceder el limite de extraccion");
-} else if (dineroAExtraer < saldoEnCuenta) {
-    saldoEnCuenta = saldoEnCuenta - dineroAExtraer;
-    alert("su saldo se actualizo");
-    actualizarSaldoEnPantalla();
-} else {
-    alert("Error,Digite un valor correcto");
-}
+        if (dineroAExtraer > saldoEnCuenta) {
+            alert("Error, su saldo es insuficiente");
+        } else if (dineroAExtraer > limiteExtraccion) {
+            alert("No puede exceder el limite de extraccion");
+        } else if (dineroAExtraer < saldoEnCuenta) {
+            saldoEnCuenta = saldoEnCuenta - dineroAExtraer;
+            alert("su saldo se actualizo");
+            actualizarSaldoEnPantalla();
+        } else {
+            alert("Error,Digite un valor correcto");
+        }
+    }
+    else{
+        alert('Servicio No Disponible.  Debes primero ingresar Usurio y Contraseña');
+    }
 }
 
 function depositarDinero() {
-var cantidad = parseInt(prompt("ingrese la cantidad a depositar"), 0);
+    if(estadoDelUsuario){
+        var cantidad = parseInt(prompt("ingrese la cantidad a depositar"), 0);
 
-if (isNaN(cantidad)) {
-    return alert("Ingrese numeritooos no retiramos letras");
-} else if (cantidad <= 0) {
-    return alert("Ups! si hago esto te robo platica");
-}
-//saldoEnCuenta = saldoEnCuenta + cantidad
-saldoEnCuenta += cantidad;
-actualizarSaldoEnPantalla();
-alert("Su nuevo saldo es: " + saldoEnCuenta);
+        if (isNaN(cantidad)) {
+            return alert("Ingrese numeritooos no retiramos letras");
+        } else if (cantidad <= 0) {
+            return alert("Ups! si hago esto te robo platica");
+        }
+        //saldoEnCuenta = saldoEnCuenta + cantidad
+        saldoEnCuenta += cantidad;
+        actualizarSaldoEnPantalla();
+        alert("Su nuevo saldo es: " + saldoEnCuenta);
+            }
+    else{
+        alert('Servicio No Disponible.  Debes primero ingresar Usurio y Contraseña');
+    }
 }
 
 function cambiarLimiteDeExtraccion() {
-    var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de estrasion"), 0);
-    if(nuevoLimite%100 == 0){
-        limiteExtraccion = nuevoLimite;
-        actualizarLimiteEnPantalla();
-        alert(
-            "Pum pum!! Se ha actualizado tu límite de extracción, nuevo valor " +
-            limiteExtraccion);
-    }
-    else{
-        alert('Solo puedes ingresar múltiplos de 100');
+    if(estadoDelUsuario){
+        var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de estrasion"), 0);
+        if(nuevoLimite%100 == 0){
+            limiteExtraccion = nuevoLimite;
+            actualizarLimiteEnPantalla();
+            alert(
+                "Pum pum!! Se ha actualizado tu límite de extracción, nuevo valor " +
+                limiteExtraccion);
+        }
+        else{
+            alert('Solo puedes ingresar múltiplos de 100');
+        }
+    }else{
+        alert('Servicio No Disponible.  Debes primero ingresar Usurio y Contraseña');
     }
 
 }
 
 function transferirDinero(){
-    var cantidadParaTransferir = parseInt(prompt("Ingrese la cantidad a transferir", 0));
-    if(cantidadParaTransferir <= saldoEnCuenta){
-        saldoEnCuenta -= cantidadParaTransferir;
-        actualizarSaldoEnPantalla();
+    if(estadoDelUsuario){
+        var cantidadParaTransferir = parseInt(prompt("Ingrese la cantidad a transferir", 0));
+        if(cantidadParaTransferir <= saldoEnCuenta){
+            saldoEnCuenta -= cantidadParaTransferir;
+            actualizarSaldoEnPantalla();
+        }
+        else{
+            alert('¡¡No puedes transferir más dinero del que tienes en la cuenta!!');
+        }
     }
     else{
-        alert('¡¡No puedes transferir más dinero del que tienes en la cuenta!!');
+        alert('Servicio No Disponible.  Debes primero ingresar Usurio y Contraseña');
     }
 }
