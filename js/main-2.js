@@ -185,16 +185,21 @@ function extraerDinero() {
     if(estadoDelUsuario){
         let dineroAExtraer = parseInt(prompt("Digite el Valor a extraer"), 0);
 
-        if (dineroAExtraer > saldoEnCuenta) {
-            alert("Error, su saldo es insuficiente");
-        } else if (dineroAExtraer > limiteExtraccion) {
-            alert("No puede exceder el limite de extraccion");
-        } else if (dineroAExtraer < saldoEnCuenta) {
-            saldoEnCuenta = saldoEnCuenta - dineroAExtraer;
-            alert("su saldo se actualizo");
-            actualizarSaldoEnPantalla();
-        } else {
-            alert("Error,Digite un valor correcto");
+        if(dineroAExtraer%100 == 0){
+            if (dineroAExtraer > saldoEnCuenta) {
+                alert("Error, su saldo es insuficiente");
+            } else if (dineroAExtraer > limiteExtraccion) {
+                alert("No puede exceder el limite de extraccion");
+            } else if (dineroAExtraer < saldoEnCuenta) {
+                saldoEnCuenta = saldoEnCuenta - dineroAExtraer;
+                alert("su saldo se actualizo");
+                actualizarSaldoEnPantalla();
+            } else {
+                alert("Error,Digite un valor correcto");
+            }
+        }
+        else{
+            alert('Cantidad No Valida.  Sólo puedes extraer cantidades en múltiplos de 100');
         }
     }
     else{
